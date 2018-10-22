@@ -24,7 +24,7 @@
 				</div>
 				<div class="header-bottom">
 					<button class="catalog-button">Каталог товаров</button>
-							<ul class="goods-catalog">
+							<ul class="goods-catalog hide-slide">
 								<li><a href="#">Виртуальная реальность</a></li>
 								<li><a href="catalog.html">Моноподы для селфи</a></li>
 								<li><a href="#">Экшн-камеры</a></li>
@@ -199,8 +199,8 @@
 				<div class="contacts">
 					<h3>Контакты</h3>
 					<p>Вы можете забрать товар сами, заехав в наш офис. Заодно, вы сможете проверить работоспособность покупки. Всякое бывает.</p>
-					<img src="image/map.jpg" width="560" height="222" alt="г. Москва, ул. Строителей, 15">
-					<a class="button" href="#">Напишите нам</a>
+					<img class="map-image" src="image/map.jpg" width="560" height="222" alt="г. Москва, ул. Строителей, 15">
+					<a class="button write" href="#">Напишите нам</a>
 				</div>
 			</div>
 		</section>
@@ -257,7 +257,37 @@
 	</div>
 	<div class="modal modal-map hide-slide">
 		<img src="image/map-big.jpg">
-		<button class="close-button" type="button"><span class="visually-hidden">Закрыть</span></button>
+		<button class="close-button map-close" type="button"><span class="visually-hidden">Закрыть</span></button>
 	</div>
+	<script >
+		var write = document.querySelector(".write");
+		var modalWrite = document.querySelector(".modal-write");
+		var close = document.querySelector(".close-button");
+		var mapImage = document.querySelector(".map-image");
+		var map = document.querySelector(".modal-map");
+		var mapClose = document.querySelector(".map-close");
+		var catalog = document.querySelector(".goods-catalog");
+		var catalogButton = document.querySelector(".catalog-button");
+
+		write.addEventListener("click", function (evt) {
+			evt.preventDefault();
+			modalWrite.classList.remove("hide-slide");
+		});
+
+		mapImage.addEventListener("click", function (evt) {
+            evt.preventDefault();
+            map.classList.remove("hide-slide");
+		});
+
+		close.addEventListener("click", function (evt) {
+			evt.preventDefault();
+			modalWrite.classList.add("hide-slide");
+		});
+
+		mapClose.addEventListener("click", function (evt) {
+			evt.preventDefault();
+			map.classList.add("hide-slide");	
+		});
+	</script>
 </body>
 </html>
