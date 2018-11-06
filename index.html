@@ -13,7 +13,7 @@
 				<div class="header-top">
 					<div class="search-feild">
 							<form class="search-form">
-								<input type="search" name="search-form" placeholder="Поиск по сайту"><input type="submit" name="search-submit" value="Найти">
+								<input id="search-field" type="search" name="search-form" placeholder="Поиск по сайту"><input id="search-button" type="submit" class="hide-slide" name="search-submit" value="Найти">
 							</form>
 					</div>		
 					<ul class="user-nav-list">
@@ -149,25 +149,25 @@
 			<h2 class="visually-hidden">Услуги</h2>
 			<div class="container">
 				<ul class="services-list">
-					<li class="services-item active-service-button">
+					<li id="services-button1" class="services-item active-service-button">
 						<p>Доставка</p>
 					</li>
-					<li class="services-item">
+					<li id="services-button2" class="services-item">
 						<p>Гарантия</p>
 					</li>
-					<li class="services-item">
+					<li id="services-button3" class="services-item">
 						<p>Кредит</p>
 					</li>
 				</ul>
-				<div class="conditions conditions-delivery">
+				<div id="services-slide1" class="conditions conditions-delivery">
 							<h3>Доставка</h3>
 							<p>Мы с удовольствием доставим ваш товар прямо к вашему подъезду совершенно бесплатно! Ведь мы неплохо заработаем, поднимая его на ваш этаж.</p>
 				</div>
-				<div class="conditions conditions-warranty hide-slide">
+				<div id="services-slide2" class="conditions conditions-warranty hide-slide">
 							<h3>Гарантия</h3>
 							<p>Если из-за возгорания купленного у нас товара у вас сгорит дом — не переживайте, мы выдадим вам новый.<br>Товар, не дом, конечно же.</p>
 				</div>
-				<div class="conditions conditions-credit hide-slide">
+				<div id="services-slide3" class="conditions conditions-credit hide-slide">
 							<h3>Кредит</h3>
 							<p>Залезть в долговую яму стало проще! Кредитные консультанты подберут для вас наиболее выгодные<br>условия кредита. Выгодные для нашего банка, разумеется.</p>
 				</div>
@@ -268,6 +268,14 @@
 		var mapClose = document.querySelector(".map-close");
 		var catalog = document.querySelector(".goods-catalog");
 		var catalogButton = document.querySelector(".catalog-button");
+		var searchField = document.querySelector("#search-field");
+		var searchButton = document.querySelector("#search-button");
+		var servicesButton1 = document.querySelector("#services-button1");
+		var servicesButton2 = document.querySelector("#services-button2");
+		var servicesButton3 = document.querySelector("#services-button3");
+		var servicesSlide1 = document.querySelector("#services-slide1");
+		var servicesSlide2 = document.querySelector("#services-slide2");
+		var servicesSlide3 = document.querySelector("#services-slide3");
 
 		write.addEventListener("click", function (evt) {
 			evt.preventDefault();
@@ -287,6 +295,41 @@
 		mapClose.addEventListener("click", function (evt) {
 			evt.preventDefault();
 			map.classList.add("hide-slide");	
+		});
+
+		searchField.addEventListener("focus", function (evt) {
+			evt.preventDefault();
+			searchButton.classList.remove("hide-slide");
+		});
+
+		servicesButton1.addEventListener("click", function (evt) {
+			evt.preventDefault();
+			servicesButton1.classList.add("active-service-button");
+			servicesSlide1.classList.remove("hide-slide");
+			servicesButton2.classList.remove("active-service-button");
+			servicesSlide2.classList.add("hide-slide");
+			servicesButton3.classList.remove("active-service-button");
+			servicesSlide3.classList.add("hide-slide");
+		});
+
+		servicesButton2.addEventListener("click", function (evt) {
+			evt.preventDefault();
+			servicesButton2.classList.add("active-service-button");
+			servicesSlide2.classList.remove("hide-slide");
+			servicesButton1.classList.remove("active-service-button");
+			servicesSlide1.classList.add("hide-slide");
+			servicesButton3.classList.remove("active-service-button");
+			servicesSlide3.classList.add("hide-slide");
+		});
+
+		servicesButton3.addEventListener("click", function (evt) {
+			evt.preventDefault();
+			servicesButton3.classList.add("active-service-button");
+			servicesSlide3.classList.remove("hide-slide");
+			servicesButton1.classList.remove("active-service-button");
+			servicesSlide1.classList.add("hide-slide");
+			servicesButton2.classList.remove("active-service-button");
+			servicesSlide2.classList.add("hide-slide");
 		});
 	</script>
 </body>
